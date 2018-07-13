@@ -1,0 +1,102 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('https://www.usc.edu/assets/fonts/NationalWeb-Regular.eot');
+	src: local(':)'),
+	url('https://www.usc.edu/assets/fonts/NationalWeb-Regular.woff') format('woff'),
+	url('https://www.usc.edu/assets/fonts/NationalWeb-Regular.ttf') format('truetype'),
+	url('https://www.usc.edu/assets/fonts/NationalWeb-Regular.svg') format('svg');
+	font-weight: 500;
+	font-style: normal;
+}
+
+body {
+  margin: 40px;
+  font-family: 'National';
+  background-color: #444;
+  color: #fff;
+}
+
+h1, p {
+  margin: 0 0 1em 0;
+}
+
+.wrapper {
+  max-width: 940px;
+  margin: 0 20px;
+  display: grid;
+  grid-gap: 10px;
+}
+
+@media screen and (min-width: 600px) {
+
+  /* no grid support? */
+  .block-a, .block-b, .block-c {
+    float: left;
+    width: 19.1489%;
+  }
+
+  .content {
+    float: right;
+    width: 79.7872%;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    grid-template-columns: 1fr 3fr;
+    grid-auto-rows: minmax(150px, auto);
+  }
+
+  .header, .footer {
+    background-color: #012622;
+    grid-column: 1 / -1;
+    /* needed for the floated layout */
+    clear: both;
+  }
+
+  .block-a {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #ccc;
+  }
+
+  .block-b {
+    grid-column: 1;
+    grid-row: 4;
+    background-color: #ccc;
+  }
+
+  .block-c {
+    grid-column: 1;
+    grid-row: 6;
+    background-color: #ccc;
+  }
+
+  .content {
+    grid-column: 2;
+    grid-row: 2 / 7;
+    background-color: #ccc;
+  }
+
+}
+
+.wrapper > * {
+
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  /* needed for the floated layout*/
+  margin-bottom: 10px;
+}
+
+/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+@supports (display: grid) {
+  .wrapper > * {
+    width: auto;
+    margin: 0;
+  }
+}
